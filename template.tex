@@ -1,0 +1,33 @@
+% Sets the document type to article, the paper size to A4 and the font size to 12
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{commands}
+
+\begin{document}
+
+% For if you want a title page
+\author{First Last --- ID number}
+\title{COURSE CODE Assignment ASSIGNMENT NUMBER}
+\date{\today}
+\maketitle
+\newpage
+
+% For an assignment with questions, you may want to use the question environment
+\begin{question}{1}[Proving $1+1=2$]
+	
+	% Using the amsthm environments defined in commands.sty may be useful to structure an answer
+	\begin{lem}[The Riemann Hypothesis]
+		\begin{equation*}
+			\left\{x  : \zeta(x+yi) =0 \wedge x \neq \frac{1}{2}\right\} \neq \emptyset
+		\end{equation*}\label{lem1}
+	\end{lem}
+	
+	\begin{proof}
+		Trivial.
+	\end{proof}
+
+	We conclude from \cref{lem1} that $1+1=2$.
+	
+\end{question}
+
+\end{document}

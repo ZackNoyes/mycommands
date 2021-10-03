@@ -1,0 +1,174 @@
+% IMPORTANT NOTE
+% For your .tex files to be able to find this, it either needs to
+% be in the same directory, or located as per
+% https://tex.stackexchange.com/a/1167/243466 .
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{commands}
+
+\RequirePackage{amssymb, amsmath, amsthm} % https://tex.stackexchange.com/a/32102
+\RequirePackage{mathtools} % makes maths nicer
+\RequirePackage[margin=1in]{geometry} % Gives smaller margins
+\RequirePackage[colorlinks=true,linkcolor=blue,citecolor=magenta]{hyperref} % For urls and to make references nicer
+
+% http://www.ams.org/arc/tex/amscls/amsthdoc.pdf for theorems
+
+% Possible packages:
+% \RequirePackage{biblatex} % For bibliographies
+\RequirePackage{graphicx} % For including images
+\RequirePackage{float} % For [H] option for figures
+\RequirePackage{enumitem} % For controlling lists better: see environments defiend below
+\RequirePackage{xparse} % For helping with arguments of new environments/commands
+\RequirePackage{bm} % For better bold maths (use \bm)
+\RequirePackage{caption} % Makes sure that empty figure captions don't have a ":"
+\RequirePackage{wrapfig} % to make wrapfigures - pretty self-explanatory
+\RequirePackage{pdfpages} % To include other pdf pages (e.g. coversheets)
+\RequirePackage{fancyvrb} % To do fancy stuff with verbatim environments
+
+% Cleveref package for nice references
+\RequirePackage[capitalise,noabbrev]{cleveref} % capitalise figure names and don't abbreviate
+\crefname{equation}{}{} % Remove 'equation' from equations
+
+% Tikz library for drawings
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta} % For drawing arrows in tikz
+\usetikzlibrary{calc} % For calculating coordinates in tikz
+
+\usepackage{lmodern} % Different monospace font
+\usepackage[T1]{fontenc} % idk why
+\RequirePackage{listings} % For including code
+\RequirePackage{lstautogobble} % Remove leading tabs
+\lstset{basicstyle=\ttfamily\bfseries, columns=fixed, tabsize=4, autogobble=true}
+% You might want to add an autocomplete to your editor for:
+% \begin{center}\vspace{-1.5em}\begin{tabular}{c}\begin{lstlisting}
+% \end{lstlisting}\end{tabular}\vspace{-1em}\end{center}
+% That will make a centered code listing.
+
+%Change the document-wide spacings
+\setlength{\parindent}{0in} % Make sure paragraphs don't indent
+\setlength{\parskip}{1em} % Put a space between paragraphs
+% Ensure that display maths environments aren't too spaced out
+\setlength{\abovedisplayskip}{0.8em}
+\setlength{\abovedisplayshortskip}{0.5em}
+\setlength{\belowdisplayskip}{0.8em}
+\setlength{\belowdisplayshortskip}{0.5em}
+
+\allowdisplaybreaks % Lets equations run over pages
+
+% amsthm definitions
+\newtheoremstyle{plain}
+	{2\topsep}  % ABOVESPACE
+	{0}   		% BELOWSPACE
+	{\itshape}  % BODYFONT
+	{0pt}       % INDENT (empty value is the same as 0pt)
+	{\bfseries} % HEADFONT
+	{.}         % HEADPUNCT
+	{5pt plus 1pt minus 1pt} % HEADSPACE
+	{}          % CUSTOM-HEAD-SPEC
+
+\newtheoremstyle{case}
+	{6pt}
+	{6pt}
+	{}
+	{}
+	{\bfseries}
+	{:}
+	{.5em}
+	{}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+\theoremstyle{case}
+\newtheorem{case}{Case}
+\newtheorem*{BC}{Base Case}
+\newtheorem*{BCs}{Base Cases}
+\newtheorem*{IS}{Inductive Step}
+\newtheorem*{IF}{Proof of ``if''}
+\newtheorem*{OI}{Proof of ``only if''}
+
+% For making an enumerate environment with the list items set into the margins of the page.
+\newenvironment{insetenum}[1][]
+{\begin{enumerate}[leftmargin=0pt,#1]}
+{\end{enumerate}}
+
+% Defines a compact enumerate and itemize with an optional argument to specify the top-spacing (default is -1em to cancel the \parskip).
+\newenvironment{compenum}[1][-0.5em]
+{\begin{enumerate}[noitemsep,topsep=#1,parsep=0.5ex,partopsep=0pt]}
+{\end{enumerate}}
+
+\newenvironment{compitem}[1][-0.5em]
+{\begin{itemize}[noitemsep,topsep=#1,parsep=0pt,partopsep=0pt]}
+{\end{itemize}}
+
+% Use this when there are multiple steps in a proof of something, like each
+% side of an inclusion or proving an isomorphism by proving homomorphism,
+% surjective, injective.
+\newenvironment{pflist}[1][-0.5em]
+{\begin{itemize}[topsep=#1,partopsep=0pt]}
+{\end{itemize}}
+
+% https://tex.stackexchange.com/a/35934/243466
+% I don't really use this much
+\RequirePackage{changepage}
+\newenvironment{ind}[1][2em]{\begin{adjustwidth}{#1}{}}{\end{adjustwidth}}
+
+% Defining maths symbol shortcuts
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\p}{\varphi}
+\newcommand{\bfb}{\mathbf{b}}
+\NewDocumentCommand{\ddx}{s m}{
+	\IfBooleanTF {#1}
+		{ \frac{d}{dx}#2 }
+		{ \frac{d}{dx}\left(#2\right) }
+}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\stline}{\;\middle\vert\;}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\sub}{\leqslant}
+\newcommand{\nsub}{\triangleleft}
+
+% Defining some maths operators
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\lcm}{lcm} % gcd already exists
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Span}{Span\,}
+\DeclareMathOperator{\Nul}{Nul}
+\DeclareMathOperator{\Col}{Col}
+\DeclareMathOperator{\Row}{Row}
+\DeclareMathOperator{\Area}{Area}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Img}{Im} % \Im is already something
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Null}{Null}
+\DeclareMathOperator{\Range}{Range}
+
+% Define a question environment
+\NewDocumentEnvironment{question}{m o}
+{\IfNoValueTF{#2}{\section*{Question #1}}{\section*{Question #1: #2}}}
+{
+	\clearpage\newpage
+	\setcounter{thm}{0}
+	\setcounter{lem}{0}
+	\setcounter{prop}{0}
+	\setcounter{defn}{0}
+	\setcounter{case}{0}
+	\setcounter{equation}{0}
+}
