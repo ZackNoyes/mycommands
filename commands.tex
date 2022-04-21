@@ -5,44 +5,41 @@
 % https://tex.stackexchange.com/a/1167/243466 .
 % You can make a symlink (or equivalent for non-Linux) so that the file
 % can stay elsewhere
-% If you have any trouble with the setup feel free to contact me
+% Use with \input{commands.tex}
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{commands}
-
-\RequirePackage{amssymb, amsmath, amsthm} % https://tex.stackexchange.com/a/32102
-\RequirePackage{mathtools} % makes maths nicer
-\RequirePackage[margin=1in]{geometry} % Gives smaller margins
-\RequirePackage[colorlinks=true,linkcolor=blue,citecolor=magenta]{hyperref} % For urls and to make references nicer
+\usepackage{amssymb, amsmath, amsthm} % https://tex.stackexchange.com/a/32102
+\usepackage{mathtools} % makes maths nicer
+\usepackage[margin=1in]{geometry} % Gives smaller margins
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=magenta]{hyperref} % For urls and to make references nicer
 
 % http://www.ams.org/arc/tex/amscls/amsthdoc.pdf for theorems
 
 % Possible packages:
-% \RequirePackage{biblatex} % For bibliographies
-\RequirePackage{graphicx} % For including images
-\RequirePackage{float} % For [H] option for figures
-\RequirePackage{enumitem} % For controlling lists better: see environments defiend below
-\RequirePackage{xparse} % For helping with arguments of new environments/commands
-\RequirePackage{bm} % For better bold maths (use \bm)
-\RequirePackage{caption} % Makes sure that empty figure captions don't have a ":"
-\RequirePackage{wrapfig} % to make wrapfigures - pretty self-explanatory
-\RequirePackage{pdfpages} % To include other pdf pages (e.g. coversheets), use \includepdf[pages=-]{file.pdf} to include all of file.pdf .
-\RequirePackage{fancyvrb} % To do fancy stuff with verbatim environments
-\RequirePackage{polynom} % For poly long div with \polylongdiv
+% \usepackage{biblatex} % For bibliographies
+\usepackage{graphicx} % For including images
+\usepackage{float} % For [H] option for figures
+\usepackage{enumitem} % For controlling lists better: see environments defiend below
+\usepackage{xparse} % For helping with arguments of new environments/commands
+\usepackage{bm} % For better bold maths (use \bm)
+\usepackage{caption} % Makes sure that empty figure captions don't have a ":"
+\usepackage{wrapfig} % to make wrapfigures - pretty self-explanatory
+\usepackage{pdfpages} % To include other pdf pages (e.g. coversheets), use \includepdf[pages=-]{file.pdf} to include all of file.pdf .
+\usepackage{fancyvrb} % To do fancy stuff with verbatim environments
+\usepackage{polynom} % For poly long div with \polylongdiv
 
 % Cleveref package for nice references
-\RequirePackage[capitalise,noabbrev]{cleveref} % capitalise figure names and don't abbreviate
+\usepackage[capitalise,noabbrev]{cleveref} % capitalise figure names and don't abbreviate
 \crefname{equation}{}{} % Remove 'equation' from equation references
 
 % Tikz library for drawings
-\RequirePackage{tikz}
+\usepackage{tikz}
 \usetikzlibrary{arrows.meta} % For drawing arrows in tikz
 \usetikzlibrary{calc} % For calculating coordinates in tikz
 
 \usepackage{lmodern} % Different monospace font
 \usepackage[T1]{fontenc} % idk why
-\RequirePackage{listings} % For including code
-\RequirePackage{lstautogobble} % Remove leading tabs
+\usepackage{listings} % For including code
+\usepackage{lstautogobble} % Remove leading tabs
 \lstset{basicstyle=\ttfamily\bfseries, columns=fixed, tabsize=4, autogobble=true}
 % You might want to add an autocomplete to your editor for:
 % \begin{center}\vspace{-1.5em}\begin{tabular}{c}\begin{lstlisting}
@@ -120,7 +117,7 @@
 
 % https://tex.stackexchange.com/a/35934/243466
 % I don't really use this much
-\RequirePackage{changepage}
+\usepackage{changepage}
 \newenvironment{ind}[1][2em]{\begin{adjustwidth}{#1}{}}{\end{adjustwidth}}
 
 % Defining maths symbol shortcuts
@@ -148,6 +145,7 @@
 \newcommand{\lrangle}[1]{\left\langle#1\right\rangle} % Inner product
 \newcommand{\sub}{\leqslant}
 \newcommand{\nsub}{\triangleleft}
+\newcommand{\card}[1]{\overline{\overline{#1}}}
 
 % Defining some maths operators
 \DeclareMathOperator{\tr}{tr}
@@ -166,6 +164,7 @@
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\Null}{Null}
 \DeclareMathOperator{\Range}{Range}
+\DeclareMathOperator{\Ann}{Ann}
 
 % Define a question environment
 \NewDocumentEnvironment{question}{m o}
