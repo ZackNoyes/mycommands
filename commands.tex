@@ -99,6 +99,11 @@
 {\begin{enumerate}[leftmargin=0pt,#1]}
 {\end{enumerate}}
 
+% For indenting things
+\newenvironment{indentblock}
+{\begin{itemize}[parsep=\parskip,topsep=0pt,partopsep=0pt,leftmargin=0.5cm]\item[]}
+{\end{itemize}}
+
 % Defines a compact enumerate and itemize with an optional argument to specify the top-spacing (default is -1em to cancel the \parskip).
 \newenvironment{compenum}[1][-0.5em]
 {\begin{enumerate}[noitemsep,topsep=#1,parsep=0.5ex,partopsep=0pt]}
@@ -120,6 +125,10 @@
 \usepackage{changepage}
 \newenvironment{ind}[1][2em]{\begin{adjustwidth}{#1}{}}{\end{adjustwidth}}
 
+% Complexity classes
+\renewcommand{\P}[0]{\ensuremath{\mathcal{P}}}
+\newcommand{\NP}[0]{\ensuremath{\mathcal{NP}}}
+
 % Defining maths symbol shortcuts
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -135,7 +144,7 @@
 		{ \frac{d}{dx}#2 }
 		{ \frac{d}{dx}\left(#2\right) }
 }
-\newcommand{\imp}{\Rightarrow}
+\newcommand{\imp}{\Longrightarrow}
 \newcommand{\stline}{\;\middle\vert\;}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
