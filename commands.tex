@@ -10,6 +10,8 @@
 \usepackage{amssymb, amsmath, amsthm} % https://tex.stackexchange.com/a/32102
 \usepackage{mathtools} % makes maths nicer
 \usepackage[margin=1in]{geometry} % Gives smaller margins
+\usepackage{algorithm} 
+\usepackage[noend]{algpseudocode} % algorithm and algopseudocode need to load before hyperref and caption (I think)
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=magenta]{hyperref} % For urls and to make references nicer
 
 % http://www.ams.org/arc/tex/amscls/amsthdoc.pdf for theorems
@@ -82,6 +84,7 @@
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}{Lemma}
 \newtheorem{prop}{Proposition}
+\newtheorem{computation}{Computation}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
