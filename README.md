@@ -11,4 +11,3 @@ There are three cases for additional shortcuts:
 
 - Common utilities that benefit most users, these should be added to `commands.tex`;
 - Subject area specific commands, these should be added to `<subject-area>.tex`;
-- Commands for personal habit, please do not add these.
