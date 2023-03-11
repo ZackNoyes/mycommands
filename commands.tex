@@ -31,10 +31,10 @@
 
 % Cleveref package for nice references
 \usepackage[capitalise,noabbrev]{cleveref} % capitalise figure names and don't abbreviate
-\crefname{equation}{}{} % Remove 'equation' from equation references
 
 % Tikz library for drawings
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usetikzlibrary{arrows.meta} % For drawing arrows in tikz
 \usetikzlibrary{calc} % For calculating coordinates in tikz
 
@@ -85,9 +85,11 @@
 \newtheorem{lem}{Lemma}
 \newtheorem{prop}{Proposition}
 \newtheorem{computation}{Computation}
+\newtheorem*{rmk}{Remark}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
+\newtheorem*{example}{Example}
 
 \theoremstyle{case}
 \newtheorem{case}{Case}
@@ -132,6 +134,14 @@
 \renewcommand{\P}[0]{\ensuremath{\mathcal{P}}}
 \newcommand{\NP}[0]{\ensuremath{\mathcal{NP}}}
 
+% for function restrictions, use as \restr{f}{A}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
 % Defining maths symbol shortcuts
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -160,6 +170,9 @@
 \newcommand{\sub}{\leqslant}
 \newcommand{\nsub}{\triangleleft}
 \newcommand{\card}[1]{\overline{\overline{#1}}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand*{\dd}{\mathop{\mathrm{d}\!}}
+\newcommand{\code}[1]{\texttt{#1}}
 
 % Defining some maths operators
 \DeclareMathOperator{\tr}{tr}
@@ -195,6 +208,9 @@
 \DeclareMathOperator{\Triv}{Triv} % Trivial representation
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator*{\EV}{\mathbb{E}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 % Define a question environment
 \NewDocumentEnvironment{question}{m o}
