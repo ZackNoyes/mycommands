@@ -7,7 +7,7 @@ Look at the `template.tex` file for example usage of some of the things in `comm
 
 ## To contribute
 
-There are three cases for additional shortcuts:
+There are two cases for additional shortcuts:
 
 - Common utilities that benefit most users, these should be added to `commands.tex`;
 - Subject area specific commands, these should be added to `<subject-area>.tex`;
